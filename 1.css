@@ -1,0 +1,12 @@
+.box{
+    width: 100px;
+    height: 200px;
+    background-color: green;
+}
+.c{
+    height: 1000px;
+    background-color: pink;
+}
+#a {
+    background-color: red;
+}

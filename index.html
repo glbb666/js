@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1"><b>Hello</b>world</p>
+    </div>
+</body>
+<script>
+   let link = document.createElement('link');
+   link.href = '1.css'
+   link.rel = 'stylesheet'
+   let head = document.getElementsByTagName('head')[0]
+   head.appendChild(link)
+
+//    var div = document.getElementById('div1');
+//    var filter = function(node){
+//        return node.tagName.toLowerCase()== 'p'?
+//        NodeFilter.FILTER_ACCEPT:
+//        NodeFilter.FILTER_REJECT;
+//    }
+//    var iterator = document.createNodeIterator(div,NodeFilter.SHOW_ELEMENT,filter,false);
+//    var node = iterator.nextNode();
+//    while(node!=null)
+//    {
+//         alert(node.tagName)
+//         node = iterator.nextNode();
+//    }
+    // var div = document.getElementById('div1');
+    // var walker = document.createTreeWalker(div,NodeFilter.SHOW_ELEMENT,null,false);
+
+    // walker.firstChild();
+    // walker.nextSibling();
+    // var node = walker.firstChild();
+    // while(node !==null){
+    //     alert(node.tagName);
+    //     node = walker.nextSibling();
+    // }
+    let p1 = document.getElementById('p1'),
+        hello = p1.firstChild.firstChild;
+        world = p1.lastChild;
+        range = document.createRange();
+    range.setStart(hello,2);
+    range.setEnd(world,3);
+    // var fragment = range.extractContents();
+    // console.log(fragment)
+    // p1.appendChild(fragment)
+
+  
+    // var span = document.createElement('span');
+    // span.style.color = 'red';
+    // span.appendChild(document.createTextNode('Inserted text'))
+    // range.insertNode(span)
+
+    // range.selectNode(hello)
+    // var span =  document.createElement('span');
+    // span.style.backgroundColor = 'yellow'
+    // range.surroundContents(span)
+    range.collapse(true)
+    console.log(range.collapsed)
+    range.detach();
+    range = null;
+</script>
+</html>
