@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 单引号 -->
+    <input type="button" value="Click Me" onclick="alert('Clicked')">
+    <!-- 双引号 -->
+    <input type="button" value="Click Me" onclick="alert(&quot;Clicked&quot;)">
+
+    <!-- 调用函数 -->
+    <input type="button" value="Click Me" onclick="a()">
+
+    <!-- 访问事件对象 -->
+    <input type="button" value="Click Me" onclick="alert(event.type)">
+
+    <!-- 输出目标元素的值 -->
+    <input type="button" value="Click Me" onclick="alert(this.value)">
+    
+</body>
+<script>
+function a(){
+    console.log('ok')
+}
+</script>
+</html>
