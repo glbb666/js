@@ -22,6 +22,7 @@
     <!-- 输出目标元素的值 -->
     <input type="button" value="Click Me" onclick="alert(this.value)">
     <input type="button" value="Click Me" id="btn1">
+    <a href="" id="link">这是一个链接</a>
 </body>
 <script>
         function a(){
@@ -47,5 +48,32 @@
         btn.removeEventListener("click",function(){
             console.log('这是一个匿名函数')
         },false);
+        // 事件冒泡
+        // document.body.onclick = function(event){
+        //     alert(event.currentTarget);
+        //     alert(this)
+        //     alert(event.target)
+        // }
+        //一个函数处理多个事件
+       
+        var handler = function(event){
+            switch(event.type){
+                case 'click':
+                    alert('Clicked');
+                    break;
+                case 'mouseover':
+                    event.target.style.backgroundColor = "red";    
+                    break;
+                case 'mouseout':
+                    event.target.style.backgroundColor = '';
+                    break;    
+            }
+        }
+        btn1.onclick = handler;
+        btn1.onmouseover = handler;
+        btn1.onmouseout = handler;
+
+        //阻止特定事件的默认行为
+        
 </script>
 </html>
