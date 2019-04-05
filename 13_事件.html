@@ -23,6 +23,7 @@
     <input type="button" value="Click Me" onclick="alert(this.value)">
     <input type="button" value="Click Me" id="btn1">
     <a href="" id="link">这是一个链接</a>
+    <input type="text" name="" id="textbox">
 </body>
 <script>
         function a(){
@@ -94,5 +95,10 @@
         document.body.onclick = function(event){
             alert(event.eventPhase)
         }
+        // 键盘事件
+        let textbox = document.getElementById('textbox');
+        textbox.addEventListener("keyup",function(event){
+            alert(event.keyCode)
+        },false)
 </script>
 </html>
