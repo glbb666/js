@@ -74,6 +74,25 @@
         btn1.onmouseout = handler;
 
         //阻止特定事件的默认行为
-        
+        let link = document.getElementById('link');
+        link.onclick = function(event){
+            event.preventDefault();
+        }
+        // 停止事件在DOM层次中的传播
+        btn1.onclick = function(event){
+            alert('stop');
+            // event.stopPropagation();
+        }
+
+        // 确定事件处于事件流的哪一个阶段
+        btn.onclick = function(event){
+            alert(event.eventPhase);
+        }
+        document.body.addEventListener("click",function(event){
+            alert(event.eventPhase)
+        },true);
+        document.body.onclick = function(event){
+            alert(event.eventPhase)
+        }
 </script>
 </html>
