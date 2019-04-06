@@ -10,6 +10,11 @@
     <form action="">
             <input type="text" name="textbox">
     </form>
+    <form action="" id="textForm">
+        <input type="text" maxlength="3" id="text1">
+        <input type="text" maxlength="3" id="text2">
+        <input type="text" maxlength="4" id="text3">
+    </form>
 </body>
 <script>
     // 文本框脚本
@@ -40,14 +45,46 @@
     //     }
     // })
     // 剪贴板事件
-    textbox.addEventListener('paste',function(event){
-        if(event.clipboardData){
-            let text = event.clipboardData.getData('text')
-            console.log(text)
-            if(!/^\d*$/.test(text)){
-                event.preventDefault();
+    // textbox.addEventListener('paste',function(event){
+    //     if(event.clipboardData){
+    //         let text = event.clipboardData.getData('text')
+    //         console.log(text)
+    //         if(!/^\d*$/.test(text)){
+    //             event.preventDefault();
+    //         }
+    //     }
+    // })
+    //自动切换焦点
+    let {log} = console;
+    (function(){
+        function tabForward(event){
+            // log(event.bubbles)
+            let target = event.target;
+            if(target.value.length==target.maxLength){
+                let form = target.form;
+                console.log(form)
+                for(let i = 0,len=form.elements.length;i<len;i++){
+                    if(form.elements[i] == target){
+                        if(form.elements[i+1]){
+                            form.elements[i+1].focus();
+                        }
+                        return;
+                    }
+                }
             }
         }
-    })
+
+        
+        // let text1 = document.getElementById('text1');
+        // let text2 = document.getElementById('text2');
+        // let text3 = document.getElementById('text3');
+        // text1.addEventListener('keyup',tabForward);
+        // text2.addEventListener('keyup',tabForward);
+        // text3.addEventListener('keyup',tabForward);
+
+        //上面的这一块代码可以用事件捕获进行优化
+        let form = document.getElementById('textForm');
+        form.addEventListener('keyup',tabForward)
+    })()
 </script>
 </html>
