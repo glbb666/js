@@ -1,4 +1,4 @@
-@ <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,29 @@
     <title> Document</title>
 </head>
 <body>
-    
+    <form action="">
+            <input type="text" name="textbox">
+    </form>
 </body>
+<script>
+    // 文本框脚本
+    // 选择文本
+    var textbox = document.forms[0].elements["textbox"];
+    // textbox.select(); select方法
+    // 取得焦点后选择文本
+    // textbox.addEventListener('focus',function(event){
+    //     event.target.select();
+    // })
+    // select事件:调用select()可以触发
+    textbox.addEventListener('select',function(event){
+        alert('被选中了哦')
+        let selectionText = getText(textbox);
+        alert(selectionText);
+    })
+    // 取得选择的文本
+    function getText(text){
+        return text.value.substring(text.selectionStart,text.selectionEnd)
+    }
+    
+</script>
 </html>
