@@ -21,15 +21,24 @@
     //     event.target.select();
     // })
     // select事件:调用select()可以触发
-    textbox.addEventListener('select',function(event){
-        alert('被选中了哦')
-        let selectionText = getText(textbox);
-        alert(selectionText);
+    // textbox.addEventListener('select',function(event){
+    //     alert('被选中了哦')
+    //     let selectionText = getText(textbox);
+    //     alert(selectionText);
+    // })
+    // // 取得选择的文本
+    // function getText(text){
+    //     return text.value.substring(text.selectionStart,text.selectionEnd)
+    // }
+    // //取得区域文本:首先得确保区域内有本文存在了
+    // textbox.setSelectionRange(0,3)
+    //过滤输入,让键盘只能输入数字
+    textbox.addEventListener('keypress',function(event){
+        let code = event.keyCode;
+        if(!/\d/.test(String.fromCodePoint(code))){
+            event.preventDefault();
+        }
     })
-    // 取得选择的文本
-    function getText(text){
-        return text.value.substring(text.selectionStart,text.selectionEnd)
-    }
     
 </script>
 </html>
