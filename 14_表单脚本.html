@@ -15,6 +15,15 @@
         <input type="text" maxlength="3" id="text2">
         <input type="text" maxlength="4" id="text3">
     </form>
+    <input type="number" min="0" max="100" step="5" id="number">
+    <input type="text" pattern="\d+" id="patternText">
+    <select name="" id="sel1">
+        <option value="">sdsad</option>
+    </select>
+    <select name="" id="sel2">
+        <option value="">1</option>
+        <option value="">2</option>
+    </select>
 </body>
 <script>
     // 文本框脚本
@@ -86,5 +95,17 @@
         let form = document.getElementById('textForm');
         form.addEventListener('keyup',tabForward)
     })()
+    let number = document.getElementById('number');
+    // 检测有效性
+    let patternText = document.getElementById('patternText');
+    patternText.addEventListener('blur',function(){
+        log(patternText.checkValidity())
+    })
+    // 移动选项:appendChild
+    let sel1 = document.getElementById('sel1');
+    let sel2 = document.getElementById('sel2');
+    sel2.appendChild(sel1.options[0])
+    //重排选项:insertBefore
+    sel2.insertBefore(sel2.options[sel2.options.length-1],sel2.options[0])
 </script>
 </html>
