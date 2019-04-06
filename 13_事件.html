@@ -106,20 +106,25 @@
         //     alert(event.keyCode)
         // },false)
         // 事件委托:利用事件冒泡
-            var list =document.getElementById('myLinks');
-            list.addEventListener("click",function(event){
-                let target = event.target;
-                switch(target.id){
-                    case 'doSomething':
-                        document.title = "i change the title";
-                        break;
-                    case 'goSomewhere':
-                        location.href = "http://www.wrox.com";
-                        break;
-                    case 'sayHi':
-                        alert('Hi');
-                        break;    
-                }
-            })
+            // var list =document.getElementById('myLinks');
+            // list.addEventListener("click",function(event){
+            //     let target = event.target;
+            //     switch(target.id){
+            //         case 'doSomething':
+            //             document.title = "i change the title";
+            //             break;
+            //         case 'goSomewhere':
+            //             location.href = "http://www.wrox.com";
+            //             break;
+            //         case 'sayHi':
+            //             alert('Hi');
+            //             break;    
+            //     }
+            // })
+        // 模拟鼠标事件
+        let btn = document.getElementById('btn');
+        let event = document.createEvent("MouseEvent");
+        event.initMouseEvent("click",true,true,document.defaultView,0,0,0,0,0,false,false,false,false,0,null);
+        btn.dispatchEvent(event);    
 </script>
 </html>
