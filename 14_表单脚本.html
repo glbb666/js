@@ -42,7 +42,7 @@
     // 剪贴板事件
     textbox.addEventListener('paste',function(event){
         if(event.clipboardData){
-            let text = event.clipboardData.get;
+            let text = event.clipboardData.getData('text')
             console.log(text)
             if(!/^\d*$/.test(text)){
                 event.preventDefault();
