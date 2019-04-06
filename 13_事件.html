@@ -24,81 +24,102 @@
     <input type="button" value="Click Me" id="btn1">
     <a href="" id="link">这是一个链接</a>
     <input type="text" name="" id="textbox">
+    <ul id="myLinks">
+        <li id="goSomewhere">goSomewhere</li>
+        <li id="doSomething">doSomething</li>
+        <li id="sayHi">sayHi</li>
+    </ul>
 </body>
 <script>
-        function a(){
-            console.log('ok')
-        }
-        function b(){
-            console.log('nn')
-        }
-        let btn = document.getElementById('btn')
-        let btn1 = document.getElementById('btn1');
-        btn.onclick = a;//会把html的onclick覆盖
-        // btn.onclick = b;//会把a覆盖
-        //addEventListener可以设置多个事件，事件会按照设置的顺序进行
-        btn.addEventListener("click",b,false);
-        btn.addEventListener("click",function(){
-            console.log('这是一个匿名函数')
-        },false);
-
-        //只能移除用addEventListener设置的函数，不能移除用onclick设置的函数
-        //不能移除用addEventListener设置的匿名函数
-        btn.removeEventListener("click",a,false);
-        // btn.removeEventListener("click",b,false);
-        btn.removeEventListener("click",function(){
-            console.log('这是一个匿名函数')
-        },false);
-        // 事件冒泡
-        // document.body.onclick = function(event){
-        //     alert(event.currentTarget);
-        //     alert(this)
-        //     alert(event.target)
+        // function a(){
+        //     console.log('ok')
         // }
-        //一个函数处理多个事件
+        // function b(){
+        //     console.log('nn')
+        // }
+        // let btn = document.getElementById('btn')
+        // let btn1 = document.getElementById('btn1');
+        // btn.onclick = a;//会把html的onclick覆盖
+        // // btn.onclick = b;//会把a覆盖
+        // //addEventListener可以设置多个事件，事件会按照设置的顺序进行
+        // btn.addEventListener("click",b,false);
+        // btn.addEventListener("click",function(){
+        //     console.log('这是一个匿名函数')
+        // },false);
+
+        // //只能移除用addEventListener设置的函数，不能移除用onclick设置的函数
+        // //不能移除用addEventListener设置的匿名函数
+        // btn.removeEventListener("click",a,false);
+        // // btn.removeEventListener("click",b,false);
+        // btn.removeEventListener("click",function(){
+        //     console.log('这是一个匿名函数')
+        // },false);
+        // // 事件冒泡
+        // // document.body.onclick = function(event){
+        // //     alert(event.currentTarget);
+        // //     alert(this)
+        // //     alert(event.target)
+        // // }
+        // //一个函数处理多个事件
        
-        var handler = function(event){
-            switch(event.type){
-                case 'click':
-                    alert('Clicked');
-                    break;
-                case 'mouseover':
-                    event.target.style.backgroundColor = "red";    
-                    break;
-                case 'mouseout':
-                    event.target.style.backgroundColor = '';
-                    break;    
-            }
-        }
-        btn1.onclick = handler;
-        btn1.onmouseover = handler;
-        btn1.onmouseout = handler;
+        // var handler = function(event){
+        //     switch(event.type){
+        //         case 'click':
+        //             alert('Clicked');
+        //             break;
+        //         case 'mouseover':
+        //             event.target.style.backgroundColor = "red";    
+        //             break;
+        //         case 'mouseout':
+        //             event.target.style.backgroundColor = '';
+        //             break;    
+        //     }
+        // }
+        // btn1.onclick = handler;
+        // btn1.onmouseover = handler;
+        // btn1.onmouseout = handler;
 
-        //阻止特定事件的默认行为
-        let link = document.getElementById('link');
-        link.onclick = function(event){
-            event.preventDefault();
-        }
-        // 停止事件在DOM层次中的传播
-        btn1.onclick = function(event){
-            alert('stop');
-            // event.stopPropagation();
-        }
+        // //阻止特定事件的默认行为
+        // let link = document.getElementById('link');
+        // link.onclick = function(event){
+        //     event.preventDefault();
+        // }
+        // // 停止事件在DOM层次中的传播
+        // btn1.onclick = function(event){
+        //     alert('stop');
+        //     // event.stopPropagation();
+        // }
 
-        // 确定事件处于事件流的哪一个阶段
-        btn.onclick = function(event){
-            alert(event.eventPhase);
-        }
-        document.body.addEventListener("click",function(event){
-            alert(event.eventPhase)
-        },true);
-        document.body.onclick = function(event){
-            alert(event.eventPhase)
-        }
-        // 键盘事件
-        let textbox = document.getElementById('textbox');
-        textbox.addEventListener("keyup",function(event){
-            alert(event.keyCode)
-        },false)
+        // // 确定事件处于事件流的哪一个阶段
+        // btn.onclick = function(event){
+        //     alert(event.eventPhase);
+        // }
+        // document.body.addEventListener("click",function(event){
+        //     alert(event.eventPhase)
+        // },true);
+        // document.body.onclick = function(event){
+        //     alert(event.eventPhase)
+        // }
+        // // 键盘事件
+        // let textbox = document.getElementById('textbox');
+        // textbox.addEventListener("keyup",function(event){
+        //     alert(event.keyCode)
+        // },false)
+        // 事件委托:利用事件冒泡
+            var list =document.getElementById('myLinks');
+            list.addEventListener("click",function(event){
+                let target = event.target;
+                switch(target.id){
+                    case 'doSomething':
+                        document.title = "i change the title";
+                        break;
+                    case 'goSomewhere':
+                        location.href = "http://www.wrox.com";
+                        break;
+                    case 'sayHi':
+                        alert('Hi');
+                        break;    
+                }
+            })
 </script>
 </html>
