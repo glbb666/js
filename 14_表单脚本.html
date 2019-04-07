@@ -7,7 +7,7 @@
     <title> Document</title>
 </head>
 <body>
-    <form action="">
+    <!-- <form action="">
             <input type="text" name="textbox">
     </form>
     <form action="" id="textForm">
@@ -23,12 +23,14 @@
     <select name="" id="sel2">
         <option value="">1</option>
         <option value="">2</option>
-    </select>
+    </select> -->
+    <!-- <iframe name="richedit" style="height:100px;width:100px;" src="14_blank.htm" frameborder="0"></iframe> -->
+    <div id="richedit" contenteditable=""></div>
 </body>
 <script>
     // 文本框脚本
-    // 选择文本
-    var textbox = document.forms[0].elements["textbox"];
+    // // 选择文本
+    // var textbox = document.forms[0].elements["textbox"];
     // textbox.select(); select方法
     // 取得焦点后选择文本
     // textbox.addEventListener('focus',function(event){
@@ -37,51 +39,51 @@
     // select事件:调用select()可以触发
     // textbox.addEventListener('select',function(event){
     //     alert('被选中了哦')
-    //     let selectionText = getText(textbox);
-    //     alert(selectionText);
-    // })
-    // // 取得选择的文本
-    // function getText(text){
-    //     return text.value.substring(text.selectionStart,text.selectionEnd)
-    // }
-    // //取得区域文本:首先得确保区域内有本文存在了
-    // textbox.setSelectionRange(0,3)
-    //过滤输入,让键盘只能输入数字
-    // textbox.addEventListener('keypress',function(event){
-    //     let code = event.keyCode;
-    //     if(!/\d/.test(String.fromCodePoint(code))){
-    //         event.preventDefault();
-    //     }
-    // })
-    // 剪贴板事件
-    // textbox.addEventListener('paste',function(event){
-    //     if(event.clipboardData){
-    //         let text = event.clipboardData.getData('text')
-    //         console.log(text)
-    //         if(!/^\d*$/.test(text)){
-    //             event.preventDefault();
+    // //     let selectionText = getText(textbox);
+    // //     alert(selectionText);
+    // // })
+    // // // 取得选择的文本
+    // // function getText(text){
+    // //     return text.value.substring(text.selectionStart,text.selectionEnd)
+    // // }
+    // // //取得区域文本:首先得确保区域内有本文存在了
+    // // textbox.setSelectionRange(0,3)
+    // //过滤输入,让键盘只能输入数字
+    // // textbox.addEventListener('keypress',function(event){
+    // //     let code = event.keyCode;
+    // //     if(!/\d/.test(String.fromCodePoint(code))){
+    // //         event.preventDefault();
+    // //     }
+    // // })
+    // // 剪贴板事件
+    // // textbox.addEventListener('paste',function(event){
+    // //     if(event.clipboardData){
+    // //         let text = event.clipboardData.getData('text')
+    // //         console.log(text)
+    // //         if(!/^\d*$/.test(text)){
+    // //             event.preventDefault();
+    // //         }
+    // //     }
+    // // })
+    // //自动切换焦点
+    // let {log} = console;
+    // (function(){
+    //     function tabForward(event){
+    //         // log(event.bubbles)
+    //         let target = event.target;
+    //         if(target.value.length==target.maxLength){
+    //             let form = target.form;
+    //             console.log(form)
+    //             for(let i = 0,len=form.elements.length;i<len;i++){
+    //                 if(form.elements[i] == target){
+    //                     if(form.elements[i+1]){
+    //                         form.elements[i+1].focus();
+    //                     }
+    //                     return;
+    //                 }
+    //             }
     //         }
     //     }
-    // })
-    //自动切换焦点
-    let {log} = console;
-    (function(){
-        function tabForward(event){
-            // log(event.bubbles)
-            let target = event.target;
-            if(target.value.length==target.maxLength){
-                let form = target.form;
-                console.log(form)
-                for(let i = 0,len=form.elements.length;i<len;i++){
-                    if(form.elements[i] == target){
-                        if(form.elements[i+1]){
-                            form.elements[i+1].focus();
-                        }
-                        return;
-                    }
-                }
-            }
-        }
 
         
         // let text1 = document.getElementById('text1');
@@ -92,25 +94,33 @@
         // text3.addEventListener('keyup',tabForward);
 
         //上面的这一块代码可以用事件捕获进行优化
-        let form = document.getElementById('textForm');
-        form.addEventListener('keyup',tabForward)
-    })()
-    let number = document.getElementById('number');
-    // 检测有效性
-    let patternText = document.getElementById('patternText');
-    patternText.addEventListener('blur',function(){
-        log(patternText.checkValidity())
-    })
-    // 移动选项:appendChild
-    let sel1 = document.getElementById('sel1');
-    let sel2 = document.getElementById('sel2');
-    sel2.appendChild(sel1.options[0])
-    //重排选项:insertBefore
-    sel2.insertBefore(sel2.options[sel2.options.length-1],sel2.options[0])
-    //向后移两位
-    let option = sel2.options[0]
-    sel2.insertBefore(option,sel2.options[option.index+2])
-    // 表单序列化
-    
+    //     let form = document.getElementById('textForm');
+    //     form.addEventListener('keyup',tabForward)
+    // })()
+    // let number = document.getElementById('number');
+    // // 检测有效性
+    // let patternText = document.getElementById('patternText');
+    // patternText.addEventListener('blur',function(){
+    //     log(patternText.checkValidity())
+    // })
+    // // 移动选项:appendChild
+    // let sel1 = document.getElementById('sel1');
+    // let sel2 = document.getElementById('sel2');
+    // sel2.appendChild(sel1.options[0])
+    // //重排选项:insertBefore
+    // sel2.insertBefore(sel2.options[sel2.options.length-1],sel2.options[0])
+    // //向后移两位
+    // let option = sel2.options[0]
+    // sel2.insertBefore(option,sel2.options[option.index+2])
+    // // 富文本编辑
+        // window.addEventListener('load',function(){
+        //     // frames["richedit"].document.designMode = "on"
+        // })
+        let div = document.getElementById('richedit')
+        div.contentEditable = 'true'
+        div.innerHTML = '32123'
+        document.execCommand('bold',false,null)
+        document.execCommand('italic',false,null)
+
 </script>
 </html>
