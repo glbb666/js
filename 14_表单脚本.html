@@ -107,5 +107,10 @@
     sel2.appendChild(sel1.options[0])
     //重排选项:insertBefore
     sel2.insertBefore(sel2.options[sel2.options.length-1],sel2.options[0])
+    //向后移两位
+    let option = sel2.options[0]
+    sel2.insertBefore(option,sel2.options[option.index+2])
+    // 表单序列化
+    
 </script>
 </html>
