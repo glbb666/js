@@ -15,24 +15,67 @@
     var drawing = document.getElementById('drawing');
     if(drawing.getContext){
         let context = drawing.getContext('2d');
-        context.fillStyle = "#ff0000"
+        // context.fillStyle = "#ff0000"
         
-        context.fillRect(10,10,50,50)
-        context.fillStyle = "rgba(0,0,255,0.5)"
-        context.fillRect(30,30,50,50)
+        // context.fillRect(10,10,50,50)
+        // context.fillStyle = "rgba(0,0,255,0.5)"
+        // context.fillRect(30,30,50,50)
         
-        context.strokeStyle = "black"
-        context.lineWidth = 10
-        context.lineCap = "squart"
-        context.lineJoin = "miter"
+        // context.strokeStyle = "black"
+        // context.lineWidth = 10
+        // context.lineCap = "squart"
+        // context.lineJoin = "miter"
 
-        context.strokeRect(10,10,100,100)
+        // context.strokeRect(10,10,100,100)
 
-        context.clearRect(40,40,10,10)
+        // context.clearRect(40,40,10,10)
 
-        let imgURL = drawing.toDataURL('image/png')
-        console.log(imgURL);
+        // let imgURL = drawing.toDataURL('image/png')
+        // console.log(imgURL);
+        context.beginPath();
+        //绘制外圆
+        context.arc(100,100,99,0,2*Math.PI,true);
+        //绘制内圆
+        context.moveTo(194,100);
+        context.arc(100,100,94,0,2*Math.PI,false);
+        
+        //绘制分针
+        context.moveTo(100,100);
+        context.lineTo(100,15);
+
+        //绘制时针
+        context.moveTo(100,100);
+        context.lineTo(35,100);
+
+        //描边路径
+        context.stroke();
+
+        //正常
+        context.font = "bold 14px Arial"
+        context.textAlign = "center"
+        context.textBaseLine = "middle"
+        //填数字动作
+        context.fillText("12",100,20)
+
+        //起点对齐
+        context.textAlign = 'start'
+        context.fillText("12",100,40)
+
+        //终点对齐
+        context.textAlign = 'end'
+        context.fillText("12",100,60)
+
+        context.textAlign = 'center'
+        context.fillText("3",180,100);
+        
+        // context.textAlign = 'start';
+        context.textBaseLine = 'bottom'
+        context.fillText('3',160,100)
+
+        // context.textAlign = 'end';
+        context.textBaseLine = 'top'
+        context.fillText('3',140,100)
     }
-    
+
 </script>
 </html>
